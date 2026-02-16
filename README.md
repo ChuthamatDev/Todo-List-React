@@ -49,7 +49,7 @@ npm run dev
 ```
 
 ### 5. Open in your browser
-Visit: `http://localhost:5173/Todo-List-React/` (Port may vary)
+Visit: `http://localhost:5173` 
 
 ##  Usage Guide (วิธีใช้งานเบื้องต้น)
 
