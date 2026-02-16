@@ -3,8 +3,8 @@
 <div align="center">
   <!-- Video Preview -->
   <video width="100%" controls autoplay loop muted poster="https://raw.githubusercontent.com/phraewchuthamat/Todo-List-React/main/public/image/Screenshot-TodoApp.png">
-    <source src="https://raw.githubusercontent.com/phraewchuthamat/Todo-List-React/main/public/Todolist.mp4" type="video/mp4">
-    Your browser does not support the video tag. <a href="https://raw.githubusercontent.com/phraewchuthamat/Todo-List-React/main/public/Todolist.mp4">Click here to watch the video</a>.
+    <source src="https://raw.githubusercontent.com/phraewchuthamat/Todo-List-React/main/public/todo.mp4" type="video/mp4">
+    Your browser does not support the video tag. <a href="https://raw.githubusercontent.com/phraewchuthamat/Todo-List-React/main/public/todo.mp4">Click here to watch the video</a>.
   </video>
   
   **Modern • Retro • Interactive**
@@ -12,32 +12,29 @@
 
 ---
 
-## ✨ Why this Todo List? (ทำไมต้องโปรเจกต์นี้?)
+## ✨ Key Features (จุดเด่น)
 
-โปรเจกต์นี้ไม่ได้เป็นแค่ To-Do List ธรรมดา แต่มาพร้อมกับ **UI Kit** คุณภาพสูงและ **UX** ที่คิดมาอย่างดี:
-
--   **🎨 Neobrutalism Design:** ดีไซน์สไตล์ Brutalist สมัยใหม่ ขอบหนา เงาแข็ง สีสันจัดจ้าน (Bold & Vivid)
--   **🧩 Atomic UI Components:** โค้ดแยกเป็นส่วนๆ (Button, Input, Card, Modal, Toast) นำไปใช้ต่อได้ง่าย
--   **📱 Fully Responsive:** รองรับการใช้งานสมบูรณ์แบบทั้งบน Desktop, Tablet และ Mobile
--   **💾 LocalStorage Persist:** บันทึกข้อมูลอัตโนมัติ ข้อมูลไม่หายเมื่อรีเฟรชหน้า
--   **⚡ Smart Loading State:** จำลอง Loading Experience เหมือนแอปพลิเคชันจริง
--   **🔔 Interactive Feedbacks:** มีระบบ Toast Notification และ Confirm Dialog แจ้งเตือนทุกการกระทำ
--   **🛠️ Built with Tailwind CSS v4:** ใช้เทคโนโลยี CSS ล่าสุด ปรับแต่งง่ายผ่าน CSS Variables
+-   **🎨 Neobrutalism Design:** ดีไซน์ทันสมัย ขอบหนา สีสดใส (Bold & Vivid)
+-   **🛡️ Strong Type Safety:** พัฒนาด้วย **TypeScript 100%** ลดบั๊ก เพิ่มความเสถียร
+-   **✨ Smooth UX:** อนิเมชั่นลื่นไหลด้วย **Framer Motion** และ Feedback ครบครัน
+-   **📱 Responsive & Persistent:** รองรับทุกหน้าจอ + บันทึกข้อมูลลง LocalStorage อัตโนมัติ
+-   **🧩 Modular Architecture:** โค้ดแยกส่วนนำไปใช้ต่อง่าย (Atomic Components) เสมือน UI Kit
 
 ## 🛠️ Tech Stack
 
 <div align="center">
 	<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+    <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
 	<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=Vite&logoColor=white" />
 	<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+    <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" />
     <img src="https://img.shields.io/badge/Lucide_React-F7DF1E?style=for-the-badge&logo=lucide&logoColor=black" />
 </div>
 
--   **Framework:** [React](https://reactjs.org/) (Vite)
--   **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
--   **Icons:** [Lucide React](https://lucide.dev/)
--   **State Management:** Context API + useReducer
--   **Architecture:** Feature-based + UI Library folder structure
+-   **Core:** React (Vite), TypeScript
+-   **Styling & Motion:** Tailwind CSS v4, Framer Motion
+-   **State & Logic:** Context API, useReducer, Custom Hooks
+-   **Assets:** Lucide React Icons
 
 ## 🚀 Getting Started (เริ่มต้นใช้งาน)
 
@@ -64,15 +61,23 @@ npm run dev
 ### 5. Open in your browser
 Visit: `http://localhost:5173/Todo-List-React/` (Port may vary)
 
+## 💡 Usage Guide (วิธีใช้งานเบื้องต้น)
+
+- **Add Task:** กดปุ่ม **ADD TASK** มุมขวาบน > กรอกข้อมูล > กด Save
+- **Edit Task:** คลิกที่ปุ่ม **Edit (Pencil)** บนการ์ดงานเพื่อแก้ไข
+- **Complete:** คลิก **Checkbox** หน้าชื่อ Task เพื่อทำเครื่องหมายว่าเสร็จ
+- **Delete:** คลิกปุ่ม **Delete (Trash)** > กดยืนยันใน Popup เพื่อลบถาวร
+
 ## 📁 Project Structure
 
 ```
 src/
-├── components/      # UI Components (Button, Card, etc.)
-├── context/         # Global State Management
-├── hooks/           # Custom Hooks
+├── components/      # UI Components (Button, Card, AlertPopup, etc.)
+├── context/         # Global State Management (Typed Contexts)
+├── hooks/           # Custom Hooks (useTodoApp, useAlert, etc.)
 ├── assets/          # Static Assets
-└── App.jsx          # Main Entry Point
+├── utils/           # Helper Functions
+└── App.tsx          # Main Entry Point
 ```
 
 ---
