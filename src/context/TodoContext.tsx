@@ -1,10 +1,24 @@
-import { createContext, useReducer, useEffect, useState } from 'react'
+import {
+    createContext,
+    useReducer,
+    useEffect,
+    useState,
+    ReactNode,
+    Dispatch,
+} from 'react'
 import { TODO_ACTIONS, todoReducer } from '../reducers/todoReducer'
 import { useData } from '../utils/useData'
+import { Todo, TodoAction } from '../types'
 
-const TodoContext = createContext()
+export interface TodoContextType {
+    tasks: Todo[]
+    dispatch: Dispatch<TodoAction>
+    isLoading: boolean
+}
 
-export const TodoProvider = ({ children }) => {
+const TodoContext = createContext<TodoContextType | undefined>(undefined)
+
+export const TodoProvider = ({ children }: { children: ReactNode }) => {
     const [isLoading, setIsLoading] = useState(true)
 
     const [tasks, dispatch] = useReducer(todoReducer, [])
@@ -17,7 +31,7 @@ export const TodoProvider = ({ children }) => {
 
             const localData = localStorage.getItem('Todo-List')
 
-            let dataToLoad
+            let dataToLoad: Todo[]
             if (localData) {
                 try {
                     dataToLoad = JSON.parse(localData)
@@ -29,7 +43,10 @@ export const TodoProvider = ({ children }) => {
                 dataToLoad = useData
             }
 
-            dispatch({ type: TODO_ACTIONS.INIT_DATA, payload: dataToLoad })
+            dispatch({
+                type: TODO_ACTIONS.INIT_DATA,
+                payload: dataToLoad,
+            })
             setIsLoading(false)
         }
 
@@ -50,3 +67,5 @@ export const TodoProvider = ({ children }) => {
 }
 
 export { TodoContext }
+
+

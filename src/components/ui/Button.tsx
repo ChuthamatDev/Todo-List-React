@@ -1,13 +1,17 @@
-import PropTypes from 'prop-types'
+import { ButtonHTMLAttributes, ReactNode } from 'react'
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    children: ReactNode
+    variant?: 'primary' | 'danger' | 'outline'
+}
 
 export const Button = ({
     children,
-    onClick,
     type = 'button',
     className = '',
     variant = 'primary',
     ...props
-}) => {
+}: ButtonProps) => {
     const baseStyle =
         'border-2 border-black font-bold transition-all duration-200'
 
@@ -23,7 +27,6 @@ export const Button = ({
     return (
         <button
             type={type}
-            onClick={onClick}
             className={`
                 ${baseStyle} 
                 ${hoverEffect} 
@@ -36,12 +39,4 @@ export const Button = ({
             {children}
         </button>
     )
-}
-
-Button.propTypes = {
-    children: PropTypes.node.isRequired,
-    onClick: PropTypes.func,
-    type: PropTypes.oneOf(['button', 'submit', 'reset']),
-    className: PropTypes.string,
-    variant: PropTypes.oneOf(['primary', 'danger', 'outline']),
 }

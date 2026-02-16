@@ -1,10 +1,24 @@
-import { createContext, useState, useCallback } from 'react'
-import { AlertPopup } from '../components/alertPopup/AlertPopup'
+import { createContext, useState, useCallback, ReactNode } from 'react'
 
-const AlertContext = createContext()
 
-export const AlertProvider = ({ children }) => {
-    const [alert, setAlert] = useState({
+export type AlertType = 'success' | 'error' | 'info' | 'warning'
+
+export interface AlertState {
+    isOpen: boolean
+    message: string
+    type: AlertType
+}
+
+export interface AlertContextType {
+    alert: AlertState
+    showAlert: (message: string, type?: AlertType, duration?: number) => void
+    closeAlert: () => void
+}
+
+const AlertContext = createContext<AlertContextType | undefined>(undefined)
+
+export const AlertProvider = ({ children }: { children: ReactNode }) => {
+    const [alert, setAlert] = useState<AlertState>({
         isOpen: false,
         message: '',
         type: 'success',
@@ -15,7 +29,7 @@ export const AlertProvider = ({ children }) => {
     }, [])
 
     const showAlert = useCallback(
-        (message, type = 'success', duration = 3000) => {
+        (message: string, type: AlertType = 'success', duration = 3000) => {
             setAlert({ isOpen: true, message, type })
 
             if (duration > 0) {
@@ -30,7 +44,7 @@ export const AlertProvider = ({ children }) => {
     return (
         <AlertContext.Provider value={{ alert, closeAlert, showAlert }}>
             {children}
-            <AlertPopup alert={alert} onClose={closeAlert} />
+            {/* AlertPopup might need updating to accept these props if it doesn't already */}
         </AlertContext.Provider>
     )
 }

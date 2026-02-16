@@ -1,6 +1,4 @@
-import { useState, useMemo, useCallback } from 'react'
-import { useTodo } from '../hooks/useTodo'
-import { useAlert } from '../hooks/useAlert'
+import { useTodoApp, VIEW_MODE } from '../hooks/useTodoApp'
 import { TodoList } from './TodoList/TodoList'
 import { Container } from './ui/Container'
 import ConfirmDialog from './dialog/ConfirmDialog'
@@ -8,75 +6,26 @@ import { TodoForm } from './TodoList/TodoForm'
 import { LoadingScreen } from './ui/LoadingScreen'
 import { AlertPopup } from './alertPopup/AlertPopup'
 
-const VIEW_MODE = {
-    LIST: 'LIST',
-    EDIT: 'EDIT',
-    CREATE: 'CREATE',
-}
-
 export default function TodoApp() {
     const {
         tasks,
         isLoading,
-        createTask,
-        updateTask,
-        deleteTask,
+        alert,
+        view,
+        activeTasksCount,
+        editingTask,
+        editingId,
+        isConfirmOpen,
         toggleComplete,
-    } = useTodo()
-    const { alert, showAlert, closeAlert } = useAlert()
-
-    const [view, setView] = useState(VIEW_MODE.LIST)
-    const [editingId, setEditingId] = useState(null)
-    const [isConfirmOpen, setIsConfirmOpen] = useState(false)
-    const [targetDeleteId, setTargetDeleteId] = useState(null)
-
-    const backToList = useCallback(() => {
-        setView(VIEW_MODE.LIST)
-        setEditingId(null)
-    }, [])
-
-    const handleSave = useCallback(
-        (formData) => {
-            if (view === VIEW_MODE.EDIT && editingId) {
-                updateTask(editingId, formData)
-                showAlert('Update Task Success! 🎉', 'success')
-            } else {
-                createTask(formData)
-                showAlert('New Task Created! 🚀', 'success')
-            }
-
-            setView(VIEW_MODE.LIST)
-            setEditingId(null)
-        },
-        [view, editingId, updateTask, createTask, showAlert]
-    )
-
-    const handleEditClick = useCallback((todo) => {
-        setEditingId(todo.id)
-        setView(VIEW_MODE.EDIT)
-    }, [])
-
-    const handleDeleteRequest = useCallback((id) => {
-        setTargetDeleteId(id)
-        setIsConfirmOpen(true)
-    }, [])
-
-    const confirmDelete = useCallback(() => {
-        if (targetDeleteId) {
-            deleteTask(targetDeleteId)
-            showAlert('Task Deleted! 🗑️', 'error')
-        }
-        setIsConfirmOpen(false)
-        setTargetDeleteId(null)
-    }, [targetDeleteId, deleteTask, showAlert])
-
-    const activeTasksCount = tasks.filter((t) => !t.completed).length
-
-    const editingTask = useMemo(() => {
-        return view === VIEW_MODE.EDIT
-            ? tasks.find((t) => t.id === editingId)
-            : null
-    }, [view, tasks, editingId])
+        closeAlert,
+        backToList,
+        handleSave,
+        handleEditClick,
+        handleDeleteRequest,
+        confirmDelete,
+        closeConfirm,
+        goCreateMode
+    } = useTodoApp()
 
     return (
         <Container>
@@ -90,14 +39,14 @@ export default function TodoApp() {
                         <TodoList
                             tasks={tasks}
                             activeTasksCount={activeTasksCount}
-                            onAddClick={() => setView(VIEW_MODE.CREATE)}
+                            onAddClick={goCreateMode}
                             onEditClick={handleEditClick}
                             onDeleteClick={handleDeleteRequest}
                             onToggleClick={toggleComplete}
                         />
                     ) : (
                         <TodoForm
-                            key={editingId || 'create'}
+                            key={editingId?.toString() || 'create'}
                             initialData={editingTask}
                             onSubmit={handleSave}
                             onCancel={backToList}
@@ -111,7 +60,7 @@ export default function TodoApp() {
                 title="Delete Task?"
                 message="Are you sure? It's gone forever."
                 onConfirm={confirmDelete}
-                onCancel={() => setIsConfirmOpen(false)}
+                onCancel={closeConfirm}
             />
         </Container>
     )

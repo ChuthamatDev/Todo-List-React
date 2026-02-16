@@ -1,15 +1,22 @@
 import { memo } from 'react'
-import PropTypes from 'prop-types'
 import { Card } from '../ui/Card'
 import { Checkbox } from '../ui/Checkbox'
 import { TodoActions } from './TodoActions'
 import { formatDateDisplay } from '../../utils/formatDate'
+import { Todo } from '../../types'
 
-export const TodoItem = memo(({ todo, onDelete, onToggle, onEdit }) => {
+interface TodoItemProps {
+    todo: Todo
+    onDelete: (id: string | number) => void
+    onToggle: (id: string | number) => void
+    onEdit: (todo: Todo) => void
+}
+
+export const TodoItem = memo(({ todo, onDelete, onToggle, onEdit }: TodoItemProps) => {
     const { id, name, dueDate, description, completed } = todo
 
     const handleToggle = () => onToggle(id)
-    const handleDelete = () => onDelete(id)
+    const handleDelete = () => onDelete(id) 
     const handleEdit = () => onEdit(todo)
 
     return (
@@ -28,10 +35,9 @@ export const TodoItem = memo(({ todo, onDelete, onToggle, onEdit }) => {
                     <h3
                         className={`
                             font-bold text-base md:text-lg leading-tight break-words transition-colors
-                            ${
-                                completed
-                                    ? 'line-through text-gray-500'
-                                    : 'text-black'
+                            ${completed
+                                ? 'line-through text-gray-500'
+                                : 'text-black'
                             }
                         `}
                     >
@@ -40,18 +46,16 @@ export const TodoItem = memo(({ todo, onDelete, onToggle, onEdit }) => {
 
                     {description && (
                         <p
-                            className={`text-xs md:text-sm leading-tight mt-1 break-words ${
-                                completed ? 'text-gray-400' : 'text-gray-500'
-                            }`}
+                            className={`text-xs md:text-sm leading-tight mt-1 break-words ${completed ? 'text-gray-400' : 'text-gray-500'
+                                }`}
                         >
                             {description}
                         </p>
                     )}
 
                     <p
-                        className={`font-bold mt-2 text-[10px] md:text-xs uppercase tracking-wider ${
-                            completed ? 'text-gray-400' : 'text-accent'
-                        }`}
+                        className={`font-bold mt-2 text-[10px] md:text-xs uppercase tracking-wider ${completed ? 'text-gray-400' : 'text-accent'
+                            }`}
                     >
                         Due: {formatDateDisplay(dueDate)}
                     </p>
@@ -62,17 +66,3 @@ export const TodoItem = memo(({ todo, onDelete, onToggle, onEdit }) => {
         </Card>
     )
 })
-
-TodoItem.propTypes = {
-    todo: PropTypes.shape({
-        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-            .isRequired,
-        name: PropTypes.string.isRequired,
-        dueDate: PropTypes.string,
-        description: PropTypes.string,
-        completed: PropTypes.bool,
-    }).isRequired,
-    onDelete: PropTypes.func.isRequired,
-    onToggle: PropTypes.func.isRequired,
-    onEdit: PropTypes.func.isRequired,
-}

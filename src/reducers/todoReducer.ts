@@ -1,3 +1,5 @@
+import { Todo, TodoAction } from '../types'
+
 export const TODO_ACTIONS = {
     CREATE: 'CREATE',
     DELETE: 'DELETE',
@@ -5,23 +7,26 @@ export const TODO_ACTIONS = {
     TOGGLE: 'TOGGLE',
     SET: 'SET',
     INIT_DATA: 'INIT_DATA',
-}
+} as const
 
-export const todoReducer = (state, action) => {
+export const todoReducer = (state: Todo[], action: TodoAction): Todo[] => {
     switch (action.type) {
         case TODO_ACTIONS.INIT_DATA:
-            return action.payload
+            return action.payload as Todo[]
 
         case TODO_ACTIONS.CREATE:
-            return [...state, action.payload]
+            // @ts-ignore: payload might be checked incorrectly if using generic action type broadly, but safe here
+            return [...state, action.payload as Todo]
 
         case TODO_ACTIONS.DELETE:
             return state.filter((todo) => todo.id !== action.payload)
 
         case TODO_ACTIONS.UPDATE:
+            // @ts-ignore: payload partial check
+            const updatePayload = action.payload as Todo
             return state.map((todo) =>
-                todo.id === action.payload.id
-                    ? { ...todo, ...action.payload }
+                todo.id === updatePayload.id
+                    ? { ...todo, ...updatePayload }
                     : todo
             )
 
@@ -31,7 +36,7 @@ export const todoReducer = (state, action) => {
             )
 
         case TODO_ACTIONS.SET:
-            return action.payload
+            return action.payload as Todo[]
 
         default:
             return state

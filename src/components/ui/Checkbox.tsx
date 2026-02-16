@@ -1,7 +1,16 @@
-import PropTypes from 'prop-types'
+import { InputHTMLAttributes } from 'react'
 import { Check } from 'lucide-react'
 
-export const Checkbox = ({ checked, onChange, className = '' }) => {
+interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
+    checked: boolean
+}
+
+export const Checkbox = ({
+    checked,
+    onChange,
+    className = '',
+    ...props
+}: CheckboxProps) => {
     return (
         <label
             className={`relative flex items-center justify-center cursor-pointer group ${className}`}
@@ -11,6 +20,7 @@ export const Checkbox = ({ checked, onChange, className = '' }) => {
                 className="sr-only peer"
                 checked={checked}
                 onChange={onChange}
+                {...props}
             />
 
             <div
@@ -31,10 +41,9 @@ export const Checkbox = ({ checked, onChange, className = '' }) => {
                     className={`
                         w-4 h-4 text-black 
                         transition-transform duration-200
-                        ${
-                            checked
-                                ? 'scale-100 opacity-100'
-                                : 'scale-0 opacity-0'
+                        ${checked
+                            ? 'scale-100 opacity-100'
+                            : 'scale-0 opacity-0'
                         }
                     `}
                     strokeWidth={4}
@@ -42,10 +51,4 @@ export const Checkbox = ({ checked, onChange, className = '' }) => {
             </div>
         </label>
     )
-}
-
-Checkbox.propTypes = {
-    checked: PropTypes.bool.isRequired,
-    onChange: PropTypes.func.isRequired,
-    className: PropTypes.string,
 }

@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import { AlertContext } from '../context/AlertContext'
+import { AlertContext, AlertContextType } from '../context/AlertContext'
 
-export const useAlert = () => {
+export const useAlert = (): AlertContextType => {
     const context = useContext(AlertContext)
 
     if (!context) {

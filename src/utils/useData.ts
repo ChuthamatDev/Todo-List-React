@@ -1,8 +1,9 @@
 import { getTodayString } from './formatDate'
+import { Todo } from '../types'
 
 const today = getTodayString()
 
-export const useData = [
+export const useData: Todo[] = [
     {
         name: 'Task 1',
         dueDate: today,

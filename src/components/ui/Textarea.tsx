@@ -1,17 +1,10 @@
-import PropTypes from 'prop-types'
+import { TextareaHTMLAttributes } from 'react'
 
-export const Textarea = ({
-    value,
-    onChange,
-    placeholder,
-    className = '',
-    ...props
-}) => {
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> { }
+
+export const Textarea = ({ className = '', ...props }: TextareaProps) => {
     return (
         <textarea
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
             className={`
                 w-full 
                 min-h-[120px]
@@ -29,11 +22,4 @@ export const Textarea = ({
             {...props}
         />
     )
-}
-
-Textarea.propTypes = {
-    value: PropTypes.string,
-    onChange: PropTypes.func,
-    placeholder: PropTypes.string,
-    className: PropTypes.string,
 }

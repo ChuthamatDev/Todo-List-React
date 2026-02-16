@@ -1,16 +1,25 @@
-import PropTypes from 'prop-types'
 import { TodoItem } from './TodoItem'
 import { TodoHeader } from './TodoHeader'
 import { TEXT_CONFIG } from '../../config/contants'
+import { Todo } from '../../types'
+
+interface TodoListProps {
+    tasks: Todo[]
+    activeTasksCount?: number
+    onAddClick: () => void
+    onEditClick: (todo: Todo) => void
+    onDeleteClick: (id: string | number) => void
+    onToggleClick: (id: string | number) => void
+}
 
 export const TodoList = ({
     tasks = [],
-    activeTasksCount,
+    activeTasksCount = 0,
     onAddClick,
     onEditClick,
     onDeleteClick,
     onToggleClick,
-}) => {
+}: TodoListProps) => {
     const hasTasks = tasks.length > 0
 
     return (
@@ -41,19 +50,4 @@ export const TodoList = ({
             </div>
         </section>
     )
-}
-
-TodoList.propTypes = {
-    tasks: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-                .isRequired,
-            text: PropTypes.string,
-            completed: PropTypes.bool,
-        })
-    ),
-    onAddClick: PropTypes.func.isRequired,
-    onEditClick: PropTypes.func,
-    onDeleteClick: PropTypes.func.isRequired,
-    onToggleClick: PropTypes.func.isRequired,
 }

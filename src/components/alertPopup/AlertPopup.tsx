@@ -1,11 +1,20 @@
-import PropTypes from 'prop-types'
+import { ReactNode } from 'react'
 import { X, CheckCircle2, AlertCircle, Info } from 'lucide-react'
 import { IconButton } from '../ui/IconButton'
+import { AlertState, AlertType } from '../../context/AlertContext'
 
-export const AlertPopup = ({ alert, onClose }) => {
+interface AlertPopupProps {
+    alert: AlertState
+    onClose: () => void
+}
+
+export const AlertPopup = ({ alert, onClose }: AlertPopupProps) => {
     if (!alert.isOpen) return null
 
-    const alertConfig = {
+    const alertConfig: Record<
+        AlertType,
+        { bgColor: string; icon: ReactNode; textColor: string }
+    > = {
         success: {
             bgColor: 'bg-[#A8DF8E]',
             icon: <CheckCircle2 className="w-6 h-6" strokeWidth={3} />,
@@ -21,6 +30,11 @@ export const AlertPopup = ({ alert, onClose }) => {
             icon: <Info className="w-6 h-6" strokeWidth={3} />,
             textColor: 'text-black',
         },
+        warning: {
+            bgColor: 'bg-[#FEEE91]',
+            icon: <AlertCircle className="w-6 h-6" strokeWidth={3} />,
+            textColor: 'text-black',
+        }
     }
 
     const currentStyle = alertConfig[alert.type] || alertConfig.info
@@ -57,13 +71,4 @@ export const AlertPopup = ({ alert, onClose }) => {
             </div>
         </div>
     )
-}
-
-AlertPopup.propTypes = {
-    alert: PropTypes.shape({
-        isOpen: PropTypes.bool,
-        type: PropTypes.oneOf(['success', 'error', 'info']),
-        message: PropTypes.string,
-    }).isRequired,
-    onClose: PropTypes.func.isRequired,
 }

@@ -1,8 +1,12 @@
-import PropTypes from 'prop-types'
 import { SquarePen, Trash } from 'lucide-react'
 import { IconButton } from '../ui/IconButton'
 
-export const TodoActions = ({ onEdit, onDelete }) => {
+interface TodoActionsProps {
+    onEdit: () => void
+    onDelete: () => void
+}
+
+export const TodoActions = ({ onEdit, onDelete }: TodoActionsProps) => {
     return (
         <div className="absolute top-4 right-4 flex gap-2">
             <IconButton onClick={onEdit} color="info" title="Edit Task">
@@ -14,9 +18,4 @@ export const TodoActions = ({ onEdit, onDelete }) => {
             </IconButton>
         </div>
     )
-}
-
-TodoActions.propTypes = {
-    onEdit: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired,
 }

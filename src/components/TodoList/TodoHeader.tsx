@@ -1,9 +1,13 @@
-import PropTypes from 'prop-types'
 import RetroHeart from '../RetroHeart'
 import { Button } from '../ui/Button'
 import { TEXT_CONFIG } from '../../config/contants'
 
-export const TodoHeader = ({ activeTasksCount, onAddClick }) => {
+interface TodoHeaderProps {
+    activeTasksCount: number
+    onAddClick: () => void
+}
+
+export const TodoHeader = ({ activeTasksCount, onAddClick }: TodoHeaderProps) => {
     return (
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
             <div>
@@ -27,9 +31,4 @@ export const TodoHeader = ({ activeTasksCount, onAddClick }) => {
             </Button>
         </div>
     )
-}
-
-TodoHeader.propTypes = {
-    activeTasksCount: PropTypes.number.isRequired,
-    onAddClick: PropTypes.func.isRequired,
 }

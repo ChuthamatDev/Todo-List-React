@@ -1,19 +1,15 @@
-import PropTypes from 'prop-types'
+import { InputHTMLAttributes } from 'react'
+
+interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> { }
 
 export const TextInput = ({
     type = 'text',
-    placeholder,
-    value,
-    onChange,
     className = '',
     ...props
-}) => {
+}: TextInputProps) => {
     return (
         <input
             type={type}
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
             className={`
                 w-full 
                 border-2 border-black 
@@ -29,12 +25,4 @@ export const TextInput = ({
             {...props}
         />
     )
-}
-
-TextInput.propTypes = {
-    type: PropTypes.string,
-    placeholder: PropTypes.string,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    onChange: PropTypes.func,
-    className: PropTypes.string,
 }

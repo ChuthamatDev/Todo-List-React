@@ -1,6 +1,11 @@
-import PropTypes from 'prop-types'
+import { ReactNode } from 'react'
 
-export const Container = ({ children, className = '' }) => {
+interface ContainerProps {
+    children: ReactNode
+    className?: string
+}
+
+export const Container = ({ children, className = '' }: ContainerProps) => {
     return (
         <div className="min-h-screen bg-primary flex justify-center items-start pt-10 md:items-center md:pt-0 p-4">
             <div
@@ -20,9 +25,4 @@ export const Container = ({ children, className = '' }) => {
             </div>
         </div>
     )
-}
-
-Container.propTypes = {
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
 }

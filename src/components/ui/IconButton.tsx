@@ -1,4 +1,9 @@
-import PropTypes from 'prop-types'
+import { ButtonHTMLAttributes, ReactNode } from 'react'
+
+interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    children: ReactNode
+    color?: 'default' | 'danger' | 'info' | 'success'
+}
 
 export const IconButton = ({
     children,
@@ -6,8 +11,9 @@ export const IconButton = ({
     color = 'default',
     title,
     className = '',
-}) => {
-    const colorVariants = {
+    ...props
+}: IconButtonProps) => {
+    const colorVariants: Record<string, string> = {
         default: 'hover:bg-gray-200',
         danger: 'hover:bg-red-400 hover:text-white',
         info: 'hover:bg-blue-400 hover:text-white',
@@ -31,16 +37,9 @@ export const IconButton = ({
                 ${colorVariants[color] || colorVariants.default}
                 ${className}
             `}
+            {...props}
         >
             {children}
         </button>
     )
-}
-
-IconButton.propTypes = {
-    children: PropTypes.node.isRequired,
-    onClick: PropTypes.func.isRequired,
-    color: PropTypes.oneOf(['default', 'danger', 'info', 'success']),
-    title: PropTypes.string,
-    className: PropTypes.string,
 }

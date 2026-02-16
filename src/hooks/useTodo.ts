@@ -1,6 +1,7 @@
 import { useContext, useCallback } from 'react'
 import { TodoContext } from '../context/TodoContext'
 import { TODO_ACTIONS } from '../reducers/todoReducer'
+import { Todo } from '../types'
 
 export const useTodo = () => {
     const context = useContext(TodoContext)
@@ -12,11 +13,14 @@ export const useTodo = () => {
     const { tasks, dispatch, isLoading } = context
 
     const createTask = useCallback(
-        (formData) => {
-            const newTask = {
-                ...formData,
+        (formData: Partial<Todo>) => {
+            const newTask: Todo = {
                 id: Date.now(),
                 completed: false,
+                name: formData.name || '',
+                dueDate: formData.dueDate || '',
+                description: formData.description || '',
+                ...formData,
             }
             dispatch({ type: TODO_ACTIONS.CREATE, payload: newTask })
         },
@@ -24,14 +28,14 @@ export const useTodo = () => {
     )
 
     const deleteTask = useCallback(
-        (id) => {
+        (id: string | number) => {
             dispatch({ type: TODO_ACTIONS.DELETE, payload: id })
         },
         [dispatch]
     )
 
     const updateTask = useCallback(
-        (id, updatedData) => {
+        (id: string | number, updatedData: Partial<Todo>) => {
             dispatch({
                 type: TODO_ACTIONS.UPDATE,
                 payload: { id, ...updatedData },
@@ -41,7 +45,7 @@ export const useTodo = () => {
     )
 
     const toggleComplete = useCallback(
-        (id) => {
+        (id: string | number) => {
             dispatch({ type: TODO_ACTIONS.TOGGLE, payload: id })
         },
         [dispatch]
