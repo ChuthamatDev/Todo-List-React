@@ -4,11 +4,11 @@
 
 ##  Key Features (จุดเด่น)
 
--   ** Neobrutalism Design:** ดีไซน์ทันสมัย ขอบหนา สีสดใส (Bold & Vivid)
--   ** Strong Type Safety:** พัฒนาด้วย **TypeScript 100%** ลดบั๊ก เพิ่มความเสถียร
--   ** Smooth UX:** อนิเมชั่นลื่นไหลด้วย **Framer Motion** และ Feedback ครบครัน
--   ** Responsive & Persistent:** รองรับทุกหน้าจอ + บันทึกข้อมูลลง LocalStorage อัตโนมัติ
--   ** Modular Architecture:** โค้ดแยกส่วนนำไปใช้ต่อง่าย (Atomic Components) เสมือน UI Kit
+-    Neobrutalism Design: ดีไซน์ทันสมัย ขอบหนา สีสดใส (Bold & Vivid)
+-    Strong Type Safety: พัฒนาด้วย **TypeScript 100%** ลดบั๊ก เพิ่มความเสถียร
+-    Smooth UX: อนิเมชั่นลื่นไหลด้วย **Framer Motion** และ Feedback ครบครัน
+-    Responsive & Persistent: รองรับทุกหน้าจอ + บันทึกข้อมูลลง LocalStorage อัตโนมัติ
+-    Modular Architecture: โค้ดแยกส่วนนำไปใช้ต่อง่าย (Atomic Components) เสมือน UI Kit
 
 ## 🛠️ Tech Stack
 
