@@ -1,24 +1,14 @@
-# 🚀 Neobrutalism Todo List
-
-<div align="center">
-  <!-- Video Preview -->
-  <video width="100%" controls autoplay loop muted poster="https://raw.githubusercontent.com/phraewchuthamat/Todo-List-React/main/public/image/Screenshot-TodoApp.png">
-    <source src="https://raw.githubusercontent.com/phraewchuthamat/Todo-List-React/main/public/todo.mp4" type="video/mp4">
-    Your browser does not support the video tag. <a href="https://raw.githubusercontent.com/phraewchuthamat/Todo-List-React/main/public/todo.mp4">Click here to watch the video</a>.
-  </video>
-  
-  **Modern • Retro • Interactive**
-</div>
+#  Neobrutalism Todo List
 
 ---
 
-## ✨ Key Features (จุดเด่น)
+##  Key Features (จุดเด่น)
 
--   **🎨 Neobrutalism Design:** ดีไซน์ทันสมัย ขอบหนา สีสดใส (Bold & Vivid)
--   **🛡️ Strong Type Safety:** พัฒนาด้วย **TypeScript 100%** ลดบั๊ก เพิ่มความเสถียร
--   **✨ Smooth UX:** อนิเมชั่นลื่นไหลด้วย **Framer Motion** และ Feedback ครบครัน
--   **📱 Responsive & Persistent:** รองรับทุกหน้าจอ + บันทึกข้อมูลลง LocalStorage อัตโนมัติ
--   **🧩 Modular Architecture:** โค้ดแยกส่วนนำไปใช้ต่อง่าย (Atomic Components) เสมือน UI Kit
+-   ** Neobrutalism Design:** ดีไซน์ทันสมัย ขอบหนา สีสดใส (Bold & Vivid)
+-   ** Strong Type Safety:** พัฒนาด้วย **TypeScript 100%** ลดบั๊ก เพิ่มความเสถียร
+-   ** Smooth UX:** อนิเมชั่นลื่นไหลด้วย **Framer Motion** และ Feedback ครบครัน
+-   ** Responsive & Persistent:** รองรับทุกหน้าจอ + บันทึกข้อมูลลง LocalStorage อัตโนมัติ
+-   ** Modular Architecture:** โค้ดแยกส่วนนำไปใช้ต่อง่าย (Atomic Components) เสมือน UI Kit
 
 ## 🛠️ Tech Stack
 
@@ -36,7 +26,7 @@
 -   **State & Logic:** Context API, useReducer, Custom Hooks
 -   **Assets:** Lucide React Icons
 
-## 🚀 Getting Started (เริ่มต้นใช้งาน)
+##  Getting Started (เริ่มต้นใช้งาน)
 
 ### 1. Clone the repository
 ```bash
@@ -61,7 +51,7 @@ npm run dev
 ### 5. Open in your browser
 Visit: `http://localhost:5173/Todo-List-React/` (Port may vary)
 
-## 💡 Usage Guide (วิธีใช้งานเบื้องต้น)
+##  Usage Guide (วิธีใช้งานเบื้องต้น)
 
 - **Add Task:** กดปุ่ม **ADD TASK** มุมขวาบน > กรอกข้อมูล > กด Save
 - **Edit Task:** คลิกที่ปุ่ม **Edit (Pencil)** บนการ์ดงานเพื่อแก้ไข
@@ -82,5 +72,5 @@ src/
 
 ---
 <div align="center">
-  Create with ❤️ by <a href="https://github.com/phraewchuthamat">Phraew Chuthamat</a>
+  Create with  by <a href="https://github.com/phraewchuthamat">Phraew Chuthamat</a>
 </div>
