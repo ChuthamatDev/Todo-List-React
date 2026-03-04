@@ -2,7 +2,7 @@
 
 ---
 
-## Preview (พรีวิว)
+## Preview 
 
 <div align="center">
   <video src="https://github.com/phraewchuthamat/Todo-List-React/raw/main/public/Todolist.mp4" width="800" controls></video>
