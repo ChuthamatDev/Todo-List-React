@@ -2,7 +2,7 @@
 
 ---
 
-## Preview (พรีวิว)
+## Preview 
 
 <div align="center">
   <video src="https://res.cloudinary.com/dymaipqhi/video/upload/v1772624808/Todolist_d2gnro.mp4" width="800" controls></video>
