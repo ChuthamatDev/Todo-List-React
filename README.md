@@ -2,6 +2,20 @@
 
 ---
 
+## Preview (พรีวิว)
+
+<div align="center">
+  <video src="https://github.com/phraewchuthamat/Todo-List-React/raw/main/public/Todolist.mp4" width="800" controls></video>
+</div>
+<br />
+<div align="center">
+  <img src="./public/image/todolist.png" alt="Todo List" width="400" />
+  <img src="./public/image/form.png" alt="Form" width="400" />
+  <img src="./public/image/editTask.png" alt="Edit Task" width="400" />
+</div>
+
+---
+
 ##  Key Features (จุดเด่น)
 
 -    Neobrutalism Design: ดีไซน์ทันสมัย ขอบหนา สีสดใส (Bold & Vivid)
